@@ -1,34 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import {
-  StyleSheet, Text, View, Button,
-} from 'react-native';
+import { Text, View } from 'react-native';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { auth } from './src/services/api';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import cinemas from './src/resources/src_resources_cinemas.json';
+import cinemaReducer from './src/components/reducers/cinemaReducer';
+import AppContainer from './src/routes';
 
 export default function App() {
-  // const [token, setToken] = useState();
-  // useEffect(() => {
-  //   const bla = async () => {
-  //     const token = await auth();
-  //     setToken(token);
-  //   };
-  //   bla();
-  // }, [setToken]);
-
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Button onPress={auth} title="Push" />
-      <StatusBar />
-    </View>
+  const [store, setStore] = useState(null);
+  useEffect(() => {
+    setStore(createStore(cinemaReducer, cinemas));
+  }, []);
+  return store !== null ? (
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
+  ) : (
+    <Text>Loading</Text>
   );
 }

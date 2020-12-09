@@ -11,7 +11,7 @@ export const auth = async () => {
         password: 'apiapiapi',
       }),
     });
-    console.log(await res.text());
+    console.log(await res.json());
   } catch (e) {
     console.log(e);
   }
