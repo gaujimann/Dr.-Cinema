@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { auth } from './src/services/api';
-import cinemas from './src/resources/src_resources_cinemas.json';
-import movies from './src/resources/src_resources_movies.json';
+import { auth, getAllCinemas, getAllMovies } from './src/services/api';
 import cinemaReducer from './src/components/reducers/cinemaReducer';
 import AppContainer from './src/routes';
 
 export default function App() {
   const [store, setStore] = useState(null);
   useEffect(() => {
-    setStore(createStore(cinemaReducer, [cinemas, movies]));
+    const getCinemas = async () => {
+      const { token } = await auth();
+      const cinemas = await getAllCinemas(token);
+      const movies = await getAllMovies(token);
+      setStore(createStore(cinemaReducer, [cinemas, movies]));
+    };
+    getCinemas();
   }, []);
   return store !== null ? (
     <Provider store={store}>
