@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import CinemaList from '../../components/CinemaList';
 
 const Cinemas = ({ navigation, dispatch }) => (
-  <View>
+  <View style={{ flex: 1 }}>
     <CinemaList />
   </View>
 );

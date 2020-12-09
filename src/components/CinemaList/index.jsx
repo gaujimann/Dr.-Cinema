@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
+import latinize from 'latinize';
 import CinemaThumbnail from '../CinemaThumbnail';
 
 const CinemaList = ({ cinemas }) => (
-  <View>
+  <View style={{ flex: 1 }}>
     <FlatList
-      numColumns={3}
+      numColumns={1}
       data={cinemas}
       renderItem={({ item: { id, name, website } }) => (
         <CinemaThumbnail id={id} name={name} website={website} />
@@ -17,7 +18,7 @@ const CinemaList = ({ cinemas }) => (
 );
 
 const sortedCinemas = (reduxStoreState) => {
-  reduxStoreState.sort((cinema1, cinema2) => (cinema1.name.toUpperCase() < cinema2.name.toUpperCase() ? -1 : 1));
+  reduxStoreState.sort((cinema1, cinema2) => (latinize(cinema1.name.toUpperCase()) < latinize(cinema2.name.toUpperCase()) ? -1 : 1));
   return {
     cinemas: reduxStoreState,
   };
