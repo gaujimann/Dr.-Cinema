@@ -4,7 +4,7 @@ import CinemaList from '../../components/CinemaList';
 
 const Cinemas = ({ navigation, dispatch }) => (
   <View>
-    <CinemaList />
+    <CinemaList navigation={navigation} />
   </View>
 );
 
