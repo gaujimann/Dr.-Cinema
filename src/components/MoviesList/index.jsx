@@ -3,8 +3,15 @@ import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import MovieThumbnail from '../MovieThumbnail';
 
-const MovieList = ({ movies, cinemaId, navigation }) => {
-  const moviesInCinema = movies.filter((movie) => movie.showtimes.map((s) => s.cinema.id === cinemaId));
+const MovieList = ({ movies, cinema, navigation }) => {
+  console.log(cinema);
+  const moviesInCinema = movies.filter((movie) => {
+    console.log(
+      movie.title,
+      movie.showtimes.map((s) => s.cinema.name),
+    );
+    return movie.showtimes.map((s) => s.cinema.name).includes(cinema);
+  });
   return (
     <View>
       <FlatList
