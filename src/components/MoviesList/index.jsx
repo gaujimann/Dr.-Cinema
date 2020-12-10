@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import MovieThumbnail from '../MovieThumbnail';
 
 const MovieList = ({ movies, cinemaId, navigation }) => {
-  // console.log(movies);
   const moviesInCinema = movies.filter((movie) => movie.showtimes.map((s) => s.cinema.id === cinemaId));
   return (
     <View>

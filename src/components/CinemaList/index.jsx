@@ -18,7 +18,6 @@ const CinemaList = ({ cinemas, navigation }) => (
 );
 
 const sortedCinemas = (reduxStoreState) => {
-  console.log('REdux store State!!!!!!!!!!!!!!!!!!!', reduxStoreState[0]);
   reduxStoreState[0].sort((cinema1, cinema2) => (latinize(cinema1.name.toUpperCase()) < latinize(cinema2.name.toUpperCase()) ? -1 : 1));
   return {
     cinemas: reduxStoreState[0],

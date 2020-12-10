@@ -4,20 +4,21 @@ import {
 } from 'react-native';
 
 const MovieThumbnail = ({
-  id, name, image, plot, duration, yearRelease, genres,
+  id, name, image, yearRelease, genres, navigation,
 }) => (
-  <TouchableOpacity activeOpacity={0.8}>
+  <TouchableOpacity
+    activeOpacity={0.8}
+    onPress={() => {
+      navigation.navigate('MovieDetails', { id });
+    }}
+  >
     <View>
       <Text>
         {id}
         -
         {name}
         -
-        <Image src={image} />
-        -
-        {plot}
-        -
-        {duration}
+        <Image source={image} />
         -
         {yearRelease}
         -
