@@ -8,7 +8,7 @@ const MovieList = ({ movies, cinemaId, navigation }) => {
   return (
     <View>
       <FlatList
-        numColumns={3}
+        numColumns={1}
         data={moviesInCinema}
         renderItem={({
           item: {
@@ -22,7 +22,7 @@ const MovieList = ({ movies, cinemaId, navigation }) => {
             plot={plot}
             duration={durationMinutes}
             yearRelease={year}
-            genres={genres.map((genre) => genre.Name)}
+            genres={genres.map((genre) => genre.Name).join('\n')}
             navigation={navigation}
           />
         )}

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   View, Text, TouchableOpacity, Image,
 } from 'react-native';
+import styles from './styles';
 
 const MovieThumbnail = ({
   id, name, image, yearRelease, genres, navigation,
@@ -12,18 +13,19 @@ const MovieThumbnail = ({
       navigation.navigate('MovieDetails', { id });
     }}
   >
-    <View>
-      <Text>
-        {id}
-        -
-        {name}
-        -
-        <Image source={image} />
-        -
-        {yearRelease}
-        -
-        {genres}
-      </Text>
+    <View style={styles.container}>
+      <View style={styles.imageContainer}>
+        <Image source={{ uri: image }} style={styles.poster} />
+      </View>
+      <View style={styles.textContainer}>
+        <View>
+          <Text style={styles.title}>{name}</Text>
+        </View>
+        <Text>{yearRelease}</Text>
+        <View style={{ alignItems: 'flex-end' }}>
+          <Text style={styles.genres}>{genres}</Text>
+        </View>
+      </View>
     </View>
   </TouchableOpacity>
 );
