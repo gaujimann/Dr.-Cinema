@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Toolbar from '../../components/Toolbar';
 import MovieList from '../../components/MoviesList';
 import styles from './styles';
 
@@ -9,6 +10,7 @@ const CinemaDetails = ({ cinemas, navigation }) => {
   const selectedCinema = cinemas.find((cinema) => cinema.id === navigation.state.params.id);
   return (
     <View style={{ flex: 1 }}>
+      <Toolbar navigation={navigation} />
       <View style={styles.container}>
         <Text style={styles.text}>
           {selectedCinema.description}
