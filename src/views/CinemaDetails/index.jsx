@@ -2,12 +2,14 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Toolbar from '../../components/Toolbar';
 import MovieList from '../../components/MoviesList';
 
 const CinemaDetails = ({ cinemas, navigation }) => {
   const selectedCinema = cinemas.find((cinema) => cinema.id === navigation.state.params.id);
   return (
     <View>
+      <Toolbar navigation={navigation} />
       <Text>
         {selectedCinema.description}
         -

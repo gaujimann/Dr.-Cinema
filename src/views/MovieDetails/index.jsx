@@ -3,8 +3,8 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const MovieDetails = ({ movies, movieId }) => {
-  const SelectedMovie = movies.find((movie) => movie.id === movieId);
+const MovieDetails = ({ movies, navigation }) => {
+  const SelectedMovie = movies.find((movie) => movie.id === navigation.state.params.id);
   return (
     <View>
       <Text>Movie Details Screen</Text>
@@ -30,7 +30,9 @@ MovieDetails.propTypes = {
       ).isRequired,
     }),
   ).isRequired,
-  movieId: PropTypes.number.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 const mapStateToProps = (reduxStoreState) => ({ movies: reduxStoreState[1] });
 export default connect(mapStateToProps)(MovieDetails);
