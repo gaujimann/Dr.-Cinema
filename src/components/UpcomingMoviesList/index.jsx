@@ -6,7 +6,7 @@ import MovieThumbnail from '../MovieThumbnail';
 const UpcomingMoviesList = ({ movies, navigation }) => (
   <View>
     <FlatList
-      numColumns={3}
+      numColumns={1}
       data={movies}
       renderItem={({
         item: {
