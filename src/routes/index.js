@@ -14,8 +14,18 @@ const StackNavigator = createStackNavigator({
       title: `${navigation.state.params.name}`,
     }),
   },
-  MovieDetails,
-  UpcomingMovies,
+  MovieDetails: {
+    screen: MovieDetails,
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.name}`,
+    }),
+  },
+  UpcomingMovies: {
+    screen: UpcomingMovies,
+    navigationOptions: () => ({
+      title: 'Upcoming Movies',
+    }),
+  },
 });
 
 export default createAppContainer(StackNavigator);
