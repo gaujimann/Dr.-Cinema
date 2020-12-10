@@ -12,21 +12,27 @@ const CinemaDetails = ({ cinemas, navigation }) => {
     <View style={{ flex: 1 }}>
       <Toolbar navigation={navigation} />
       <View style={styles.container}>
-        <Text style={styles.text}>
-          {selectedCinema.description}
-          -
-          {selectedCinema.address}
-          -
-          {selectedCinema.city}
-          -
-          {selectedCinema.phone}
-          -
-          {selectedCinema.website}
-        </Text>
+        <View style={styles.descriptionContainer}>
+          <Text style={styles.text}>
+            {selectedCinema.description?.replace(/<br>/g, '').replace(/<b>/g, '')}
+          </Text>
+        </View>
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoText}>
+            {selectedCinema['address\t']}
+            {' '}
+            {selectedCinema.city}
+          </Text>
+          <Text style={styles.infoText}>
+            {'s. '}
+            {selectedCinema.phone}
+          </Text>
+          <Text style={styles.infoText}>{selectedCinema.website}</Text>
+        </View>
       </View>
       <View style={[styles.container, { flex: 1 }]}>
         <View style={styles.caption}>
-          <Text style={styles.caption}>Myndir</Text>
+          <Text style={styles.caption}>Sýningar</Text>
         </View>
         <MovieList cinemaId={navigation.state.params.id} navigation={navigation} />
       </View>

@@ -7,7 +7,7 @@ const CinemaThumbnail = ({
 }) => (
   <TouchableOpacity
     activeOpacity={0.5}
-    onPress={() => navigation.navigate('CinemaDetails', { id })}
+    onPress={() => navigation.navigate('CinemaDetails', { id, name })}
   >
     <View style={styles.container}>
       <Text style={styles.name}>{name}</Text>
