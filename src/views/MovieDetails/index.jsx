@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {
+  View, Text, Image, ScrollView,
+} from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import YoutubePlayer from 'react-native-youtube-iframe';
+import styles from './styles';
 
 const MovieDetails = ({ movies, upcoming, navigation }) => {
   const SelectedMovie = [
@@ -13,19 +16,44 @@ const MovieDetails = ({ movies, upcoming, navigation }) => {
 
   const vId = SelectedMovie[index].trailers[0].results[0].url.split('embed/')[1];
   return (
-    <View>
-      <Text>{SelectedMovie[index].title}</Text>
-      <Text>{SelectedMovie[index].title}</Text>
-      <Text>{SelectedMovie[index].plot}</Text>
-      <Text>{SelectedMovie[index].durationMinutes}</Text>
-      <Text>{SelectedMovie[index].year}</Text>
-      <Text>{SelectedMovie[index].genres.map((genre) => genre.Name).join('\n')}</Text>
+    <ScrollView style={{ flex: 1 }}>
+      <View style={styles.imageContainer}>
+        <Image source={{ uri: SelectedMovie[index].poster }} style={styles.poster} />
+      </View>
+
+      <View style={{ margin: 8 }}>
+        <Text style={{ fontSize: 16 }}>{SelectedMovie[index].plot}</Text>
+      </View>
+      <View style={styles.container}>
+        <View>
+          <Text>
+            {'Lengd: '}
+            {SelectedMovie[index].durationMinutes}
+            {' '}
+            mín.
+          </Text>
+          <Text>
+            {'Útgáfuár: '}
+            {SelectedMovie[index].year}
+          </Text>
+        </View>
+        <View>
+          <Text style={{ fontStyle: 'italic' }}>
+            {SelectedMovie[index].genres.map((genre) => genre.Name).join('\n')}
+          </Text>
+        </View>
+      </View>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Trailer</Text>
+      </View>
       {SelectedMovie[index].trailers.length > 0 ? (
-        <YoutubePlayer height={300} play={false} videoId={vId} />
+        <View style={{ padding: 8 }}>
+          <YoutubePlayer height={300} play={false} videoId={vId} />
+        </View>
       ) : (
         <Text>No trailer available</Text>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
