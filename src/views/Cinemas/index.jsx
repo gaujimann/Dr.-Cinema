@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CinemaList from '../../components/CinemaList';
 import Toolbar from '../../components/Toolbar';
-import { getCinemas } from '../../actions/index';
+import { getCinemas } from '../../actions/getCinemas';
 
 const Cinemas = ({ getCinemas, navigation }) => {
   useEffect(() => {

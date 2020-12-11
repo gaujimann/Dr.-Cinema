@@ -12,36 +12,36 @@ export const auth = async () => {
   });
   return res.json();
 };
-
-export const getAllCinemas = async (token) => {
-  const res = await fetch('https://api.kvikmyndir.is/theaters', {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      'x-access-token': `${token}`,
-    },
-  });
-  return res.json();
-};
-
-export const getAllMovies = async (token) => {
-  const res = await fetch('https://api.kvikmyndir.is/movies', {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      'x-access-token': `${token}`,
-    },
-  });
-  return res.json();
-};
-
-export const getAllUpcomingMovies = async (token) => {
-  const res = await fetch('https://api.kvikmyndir.is/upcoming', {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      'x-access-token': `${token}`,
-    },
-  });
-  return res.json();
-};
+//
+// export const getAllCinemas = async (token) => {
+//   const res = await fetch('https://api.kvikmyndir.is/theaters', {
+//     method: 'GET',
+//     credentials: 'include',
+//     headers: {
+//       'x-access-token': `${token}`,
+//     },
+//   });
+//   return res.json();
+// };
+//
+// export const getAllMovies = async (token) => {
+//   const res = await fetch('https://api.kvikmyndir.is/movies', {
+//     method: 'GET',
+//     credentials: 'include',
+//     headers: {
+//       'x-access-token': `${token}`,
+//     },
+//   });
+//   return res.json();
+// };
+//
+// export const getAllUpcomingMovies = async (token) => {
+//   const res = await fetch('https://api.kvikmyndir.is/upcoming', {
+//     method: 'GET',
+//     credentials: 'include',
+//     headers: {
+//       'x-access-token': `${token}`,
+//     },
+//   });
+//   return res.json();
+// };

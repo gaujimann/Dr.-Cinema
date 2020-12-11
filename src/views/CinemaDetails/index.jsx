@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Toolbar from '../../components/Toolbar';
 import MovieList from '../../components/MoviesList';
+import { getMovies } from '../../actions/getMovies';
 import styles from './styles';
 
-const CinemaDetails = ({ cinemas, navigation }) => {
+const CinemaDetails = ({ getMovies, cinemas, navigation }) => {
+  useEffect(() => {
+    const getMoviesAsync = async () => getMovies();
+    getMoviesAsync();
+  }, []);
   const selectedCinema = cinemas.find((cinema) => cinema.id === navigation.state.params.id);
   return (
     <View style={{ flex: 1 }}>
@@ -50,4 +55,4 @@ CinemaDetails.propTypes = {
 
 const mapStateToProps = (reduxStoreState) => ({ cinemas: reduxStoreState.cinemas });
 
-export default connect(mapStateToProps)(CinemaDetails);
+export default connect(mapStateToProps, { getMovies })(CinemaDetails);

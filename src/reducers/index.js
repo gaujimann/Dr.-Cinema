@@ -1,11 +1,10 @@
-export default function cinemaReducer(state, action) {
-  switch (action.type) {
-    case 'GET_CINEMAS':
-      return {
-        ...state,
-        cinemas: action.payload,
-      };
-    default:
-      return state;
-  }
-}
+import { combineReducers } from 'redux';
+import cinemaReducer from './cinemaReducer';
+import movieReducer from './movieReducer';
+import upcomingMoviesReducer from './upcomingMoviesReducer';
+
+export default combineReducers({
+  cinemas: cinemaReducer,
+  movies: movieReducer,
+  upcoming: upcomingMoviesReducer,
+});
