@@ -24,7 +24,7 @@ const UpcomingMoviesList = ({ movies, navigation }) => (
           navigation={navigation}
         />
       )}
-      keyExtractor={(cinema) => cinema.id}
+      keyExtractor={(movie) => movie.id}
     />
   </View>
 );

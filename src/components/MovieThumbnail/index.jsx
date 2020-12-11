@@ -5,12 +5,12 @@ import {
 import styles from './styles';
 
 const MovieThumbnail = ({
-  id, name, image, yearRelease, genres, navigation,
+  id, name, image, yearRelease, genres, navigation, cinemaId,
 }) => (
   <TouchableOpacity
     activeOpacity={0.8}
     onPress={() => {
-      navigation.navigate('MovieDetails', { id });
+      navigation.navigate('MovieDetails', { id, cinemaId });
     }}
   >
     <View style={styles.container}>

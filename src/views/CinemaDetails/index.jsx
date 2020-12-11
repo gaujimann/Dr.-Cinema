@@ -28,7 +28,7 @@ const CinemaDetails = ({ cinemas, navigation }) => {
         <View style={styles.caption}>
           <Text style={styles.caption}>Myndir</Text>
         </View>
-        <MovieList cinema={selectedCinema.name} navigation={navigation} />
+        <MovieList cinema={selectedCinema} navigation={navigation} />
       </View>
     </View>
   );

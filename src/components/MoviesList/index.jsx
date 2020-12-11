@@ -4,14 +4,7 @@ import { connect } from 'react-redux';
 import MovieThumbnail from '../MovieThumbnail';
 
 const MovieList = ({ movies, cinema, navigation }) => {
-  console.log(cinema);
-  const moviesInCinema = movies.filter((movie) => {
-    console.log(
-      movie.title,
-      movie.showtimes.map((s) => s.cinema.name),
-    );
-    return movie.showtimes.map((s) => s.cinema.name).includes(cinema);
-  });
+  const moviesInCinema = movies.filter((movie) => movie.showtimes.map((s) => s.cinema.name).includes(cinema.name));
   return (
     <View>
       <FlatList
@@ -31,9 +24,10 @@ const MovieList = ({ movies, cinema, navigation }) => {
             yearRelease={year}
             genres={genres.map((genre) => genre.Name).join('\n')}
             navigation={navigation}
+            cinemaId={cinema.id}
           />
         )}
-        keyExtractor={(cinema) => cinema.id}
+        keyExtractor={(movie) => movie.id}
       />
     </View>
   );
