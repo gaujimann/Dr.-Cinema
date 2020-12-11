@@ -1,26 +1,28 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
-import { WebView } from 'react-native-webview';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import YoutubePlayer from 'react-native-youtube-iframe';
 
-const MovieDetails = ({ movies, navigation }) => {
-  const SelectedMovie = movies.find((movie) => movie.id === navigation.state.params.id);
+const MovieDetails = ({ movies, upcoming, navigation }) => {
+  const SelectedMovie = [
+    movies.find((movie) => movie.id === navigation.state.params.id),
+    upcoming.find((movie) => movie.id === navigation.state.params.id),
+  ];
+  const index = SelectedMovie[0] ? 0 : 1;
+  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', index);
 
-  console.log(SelectedMovie.trailers[0].results[0].url);
+  const vId = SelectedMovie[index].trailers[0].results[0].url.split('embed/')[1];
   return (
     <View>
-      <Text>{SelectedMovie.title}</Text>
-      <Text>{SelectedMovie.title}</Text>
-      <Text>{SelectedMovie.plot}</Text>
-      <Text>{SelectedMovie.durationMinutes}</Text>
-      <Text>{SelectedMovie.year}</Text>
-      <Text>{SelectedMovie.genres.map((genre) => genre.Name).join('\n')}</Text>
-      {SelectedMovie.trailers.length > 0 ? (
-        <WebView
-          source={{ uri: 'https://www.youtube.com/embed/286202745?rel=0' }}
-          javaScriptEnabled
-        />
+      <Text>{SelectedMovie[index].title}</Text>
+      <Text>{SelectedMovie[index].title}</Text>
+      <Text>{SelectedMovie[index].plot}</Text>
+      <Text>{SelectedMovie[index].durationMinutes}</Text>
+      <Text>{SelectedMovie[index].year}</Text>
+      <Text>{SelectedMovie[index].genres.map((genre) => genre.Name).join('\n')}</Text>
+      {SelectedMovie[index].trailers.length > 0 ? (
+        <YoutubePlayer height={300} play={false} videoId={vId} />
       ) : (
         <Text>No trailer available</Text>
       )}
@@ -50,5 +52,8 @@ MovieDetails.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
-const mapStateToProps = (reduxStoreState) => ({ movies: reduxStoreState[1] });
+const mapStateToProps = (reduxStoreState) => ({
+  movies: reduxStoreState[1],
+  upcoming: reduxStoreState[2],
+});
 export default connect(mapStateToProps)(MovieDetails);

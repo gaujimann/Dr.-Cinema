@@ -3,11 +3,11 @@ import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import MovieThumbnail from '../MovieThumbnail';
 
-const UpcomingMoviesList = ({ movies, navigation }) => (
+const UpcomingMoviesList = ({ upcoming, navigation }) => (
   <View>
     <FlatList
       numColumns={1}
-      data={movies}
+      data={upcoming}
       renderItem={({
         item: {
           id, title, poster, plot, durationMinutes, year, genres,
@@ -32,7 +32,7 @@ const UpcomingMoviesList = ({ movies, navigation }) => (
 const sortedMovies = (reduxStoreState) => {
   reduxStoreState[2].sort((movie1, movie2) => (movie1.year < movie2.year ? -1 : 1));
   return {
-    movies: reduxStoreState[2],
+    upcoming: reduxStoreState[2],
   };
 };
 
