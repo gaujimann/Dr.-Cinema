@@ -48,6 +48,6 @@ CinemaDetails.propTypes = {
   // vantar cinemas propTypes!!!
 };
 
-const mapStateToProps = (reduxStoreState) => ({ cinemas: reduxStoreState[0] });
+const mapStateToProps = (reduxStoreState) => ({ cinemas: reduxStoreState.cinemas });
 
 export default connect(mapStateToProps)(CinemaDetails);

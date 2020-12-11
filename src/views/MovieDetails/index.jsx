@@ -10,7 +10,6 @@ const MovieDetails = ({ movies, upcoming, navigation }) => {
     upcoming.find((movie) => movie.id === navigation.state.params.id),
   ];
   const index = SelectedMovie[0] ? 0 : 1;
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', index);
 
   const vId = SelectedMovie[index].trailers[0].results[0].url.split('embed/')[1];
   return (
@@ -34,7 +33,7 @@ MovieDetails.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       poster: PropTypes.string.isRequired,
       plot: PropTypes.string.isRequired,
       durationMinutes: PropTypes.number.isRequired,
@@ -53,7 +52,7 @@ MovieDetails.propTypes = {
   }).isRequired,
 };
 const mapStateToProps = (reduxStoreState) => ({
-  movies: reduxStoreState[1],
-  upcoming: reduxStoreState[2],
+  movies: reduxStoreState.movies,
+  upcoming: reduxStoreState.upcoming,
 });
 export default connect(mapStateToProps)(MovieDetails);

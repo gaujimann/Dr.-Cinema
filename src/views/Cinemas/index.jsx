@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View } from 'react-native';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CinemaList from '../../components/CinemaList';
 import Toolbar from '../../components/Toolbar';
+import { getCinemas } from '../../actions/index';
 
-const Cinemas = ({ navigation }) => (
-  <View style={{ flex: 1 }}>
-    <Toolbar navigation={navigation} />
-    <CinemaList navigation={navigation} />
-  </View>
-);
+const Cinemas = ({ getCinemas, navigation }) => {
+  useEffect(() => {
+    const getCinemasAsync = async () => getCinemas();
+    getCinemasAsync();
+  }, []);
+  return (
+    <View style={{ flex: 1 }}>
+      <Toolbar navigation={navigation} />
+      <CinemaList navigation={navigation} />
+    </View>
+  );
+};
 
 Cinemas.propTypes = {
   navigation: PropTypes.shape({
@@ -17,4 +25,4 @@ Cinemas.propTypes = {
   }).isRequired,
 };
 
-export default Cinemas;
+export default connect(null, { getCinemas })(Cinemas);

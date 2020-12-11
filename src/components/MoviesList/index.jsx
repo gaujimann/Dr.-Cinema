@@ -39,9 +39,9 @@ const MovieList = ({ movies, cinema, navigation }) => {
 };
 
 const sortedMovies = (reduxStoreState) => {
-  reduxStoreState[1].sort((movie1, movie2) => (movie1.title.toUpperCase() < movie2.title.toUpperCase() ? -1 : 1));
+  reduxStoreState.movies.sort((movie1, movie2) => (movie1.title.toUpperCase() < movie2.title.toUpperCase() ? -1 : 1));
   return {
-    movies: reduxStoreState[1],
+    movies: reduxStoreState.movies,
   };
 };
 

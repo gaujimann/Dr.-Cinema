@@ -30,9 +30,9 @@ const UpcomingMoviesList = ({ upcoming, navigation }) => (
 );
 
 const sortedMovies = (reduxStoreState) => {
-  reduxStoreState[2].sort((movie1, movie2) => (movie1.year < movie2.year ? -1 : 1));
+  reduxStoreState.upcoming.sort((movie1, movie2) => (movie1.year < movie2.year ? -1 : 1));
   return {
-    upcoming: reduxStoreState[2],
+    upcoming: reduxStoreState.upcoming,
   };
 };
 
