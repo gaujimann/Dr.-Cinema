@@ -7,7 +7,12 @@ import MovieList from '../../components/MoviesList';
 import styles from './styles';
 
 const CinemaDetails = ({ cinemas, navigation }) => {
-  const selectedCinema = cinemas.find((cinema) => cinema.id === navigation.state.params.id);
+  const {
+    state: {
+      params: { id },
+    },
+  } = navigation;
+  const selectedCinema = cinemas.find((cinema) => cinema.id === id);
   return (
     <View style={{ flex: 1 }}>
       <Toolbar navigation={navigation} />
