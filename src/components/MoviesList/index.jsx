@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Text } from 'react-native';
 import { connect } from 'react-redux';
 import MovieThumbnail from '../MovieThumbnail';
 
@@ -7,28 +7,33 @@ const MovieList = ({ movies, cinema, navigation }) => {
   const moviesInCinema = movies.filter((movie) => movie.showtimes.map((s) => s.cinema.name).includes(cinema.name));
   return (
     <View>
-      <FlatList
-        numColumns={1}
-        data={moviesInCinema}
-        renderItem={({
-          item: {
-            id, title, poster, plot, durationMinutes, year, genres,
-          },
-        }) => (
-          <MovieThumbnail
-            id={id}
-            name={title}
-            image={poster}
-            plot={plot}
-            duration={durationMinutes}
-            yearRelease={year}
-            genres={genres.map((genre) => genre.Name).join('\n')}
-            navigation={navigation}
-            cinemaId={cinema.id}
-          />
-        )}
-        keyExtractor={(movie) => movie.id}
-      />
+      {moviesInCinema.length > 0 ? (
+        <FlatList
+          numColumns={1}
+          data={moviesInCinema}
+          renderItem={({
+            item: {
+              id, title, poster, plot, durationMinutes, year, genres,
+            },
+          }) => (
+            <MovieThumbnail
+              id={id}
+              name={title}
+              image={poster}
+              plot={plot}
+              duration={durationMinutes}
+              yearRelease={year}
+              genres={genres.map((genre) => genre.Name).join('\n')}
+              navigation={navigation}
+            />
+          )}
+          keyExtractor={(movie) => movie.id}
+        />
+      ) : (
+        <View>
+          <Text>Engar sýningar</Text>
+        </View>
+      )}
     </View>
   );
 };

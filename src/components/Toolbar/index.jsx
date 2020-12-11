@@ -1,15 +1,16 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import styles from './styles';
 
 const Toolbar = ({ navigation }) => (
-  <View>
+  <View style={styles.container}>
     <TouchableOpacity
-      activeOpacity={0.8}
+      activeOpacity={0.5}
       onPress={() => {
         navigation.navigate('UpcomingMovies');
       }}
     >
-      <Text>Coming Soon!</Text>
+      <Text style={styles.text}>Coming Soon!</Text>
     </TouchableOpacity>
   </View>
 );

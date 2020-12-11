@@ -8,9 +8,9 @@ const MovieThumbnail = ({
   id, name, image, yearRelease, genres, navigation, cinemaId,
 }) => (
   <TouchableOpacity
-    activeOpacity={0.8}
+    activeOpacity={0.5}
     onPress={() => {
-      navigation.navigate('MovieDetails', { id, cinemaId });
+      navigation.navigate('MovieDetails', { id, cinemaId, name });
     }}
   >
     <View style={styles.container}>

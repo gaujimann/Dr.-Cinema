@@ -8,9 +8,24 @@ import UpcomingMovies from '../views/UpcomingMovies';
 
 const StackNavigator = createStackNavigator({
   Cinemas,
-  CinemaDetails,
-  MovieDetails,
-  UpcomingMovies,
+  CinemaDetails: {
+    screen: CinemaDetails,
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.name}`,
+    }),
+  },
+  MovieDetails: {
+    screen: MovieDetails,
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.name}`,
+    }),
+  },
+  UpcomingMovies: {
+    screen: UpcomingMovies,
+    navigationOptions: () => ({
+      title: 'Upcoming Movies',
+    }),
+  },
 });
 
 export default createAppContainer(StackNavigator);

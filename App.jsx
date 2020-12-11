@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import {
@@ -25,6 +25,8 @@ export default function App() {
       <AppContainer />
     </Provider>
   ) : (
-    <Text>Loading</Text>
+    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+      <Text>Loading</Text>
+    </View>
   );
 }

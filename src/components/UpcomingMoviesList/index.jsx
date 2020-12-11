@@ -20,7 +20,7 @@ const UpcomingMoviesList = ({ movies, navigation }) => (
           plot={plot}
           duration={durationMinutes}
           yearRelease={year}
-          genres={genres.map((genre) => genre.Name)}
+          genres={genres.map((genre) => genre.Name).join('\n')}
           navigation={navigation}
         />
       )}
@@ -30,7 +30,7 @@ const UpcomingMoviesList = ({ movies, navigation }) => (
 );
 
 const sortedMovies = (reduxStoreState) => {
-  reduxStoreState[2].sort((movie1, movie2) => (movie1.title.toUpperCase() < movie2.title.toUpperCase() ? -1 : 1));
+  reduxStoreState[2].sort((movie1, movie2) => (movie1.year < movie2.year ? -1 : 1));
   return {
     movies: reduxStoreState[2],
   };
