@@ -26,4 +26,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
   },
+  showtimeContainer: {
+    padding: 8,
+  },
 });

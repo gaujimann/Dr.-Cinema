@@ -25,6 +25,7 @@ const MovieList = ({ movies, cinema, navigation }) => {
               yearRelease={year}
               genres={genres.map((genre) => genre.Name).join('\n')}
               navigation={navigation}
+              cinemaId={cinema.id}
             />
           )}
           keyExtractor={(movie) => movie.id}
