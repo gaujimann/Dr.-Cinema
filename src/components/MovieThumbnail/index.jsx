@@ -34,23 +34,19 @@ const MovieThumbnail = ({
     </View>
   </TouchableOpacity>
 );
-
+MovieThumbnail.defaultProps = {
+  cinemaId: undefined,
+};
 MovieThumbnail.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   yearRelease: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(
-    PropTypes.shape({
-      ID: PropTypes.number.isRequired,
-      Name: PropTypes.string.isRequired,
-      NameEN: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  genres: PropTypes.string.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
-  cinemaId: PropTypes.number.isRequired,
+  cinemaId: PropTypes.number,
 };
 
 export default MovieThumbnail;
