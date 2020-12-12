@@ -23,6 +23,7 @@ Cinemas.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
+  getCinemas: PropTypes.func.isRequired,
 };
 
 export default connect(null, { getCinemas })(Cinemas);

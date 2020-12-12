@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, FlatList, Text } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import MovieThumbnail from '../MovieThumbnail';
 
 const MovieList = ({ movies, cinema, navigation }) => {
@@ -37,6 +38,35 @@ const MovieList = ({ movies, cinema, navigation }) => {
       )}
     </View>
   );
+};
+
+MovieList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      poster: PropTypes.string.isRequired,
+      plot: PropTypes.string.isRequired,
+      durationMinutes: PropTypes.number.isRequired,
+      year: PropTypes.string.isRequired,
+      genres: PropTypes.arrayOf(
+        PropTypes.shape({
+          ID: PropTypes.number.isRequired,
+          Name: PropTypes.string.isRequired,
+          NameEN: PropTypes.string.isRequired,
+        }),
+      ).isRequired,
+    }),
+  ).isRequired,
+  cinema: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const sortedMovies = (reduxStoreState) => {

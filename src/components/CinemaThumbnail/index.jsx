@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 import styles from './styles';
 
 const CinemaThumbnail = ({
@@ -15,5 +16,14 @@ const CinemaThumbnail = ({
     </View>
   </TouchableOpacity>
 );
+
+CinemaThumbnail.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  website: PropTypes.string.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default CinemaThumbnail;

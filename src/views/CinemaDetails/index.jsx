@@ -53,9 +53,22 @@ const CinemaDetails = ({ getMovies, cinemas, navigation }) => {
 CinemaDetails.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
+    state: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+      }),
+    }),
   }).isRequired,
-  cinemaId: PropTypes.number.isRequired,
-  // vantar cinemas propTypes!!!
+  getMovies: PropTypes.func.isRequired,
+  cinemas: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      website: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 const mapStateToProps = (reduxStoreState) => ({ cinemas: reduxStoreState.cinemas });

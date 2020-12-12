@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 import styles from './styles';
 
 const Toolbar = ({ navigation }) => (
@@ -15,4 +16,9 @@ const Toolbar = ({ navigation }) => (
   </View>
 );
 
+Toolbar.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 export default Toolbar;

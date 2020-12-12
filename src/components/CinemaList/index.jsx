@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import latinize from 'latinize';
 import CinemaThumbnail from '../CinemaThumbnail';
 
@@ -16,6 +17,19 @@ const CinemaList = ({ cinemas, navigation }) => (
     />
   </View>
 );
+
+CinemaList.propTypes = {
+  cinemas: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      website: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 const sortedCinemas = (reduxStoreState) => {
   reduxStoreState.cinemas.sort((cinema1, cinema2) => (latinize(cinema1.name.toUpperCase()) < latinize(cinema2.name.toUpperCase()) ? -1 : 1));

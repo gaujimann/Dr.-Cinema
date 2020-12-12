@@ -114,8 +114,30 @@ MovieDetails.propTypes = {
       ).isRequired,
     }),
   ).isRequired,
+  upcoming: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      poster: PropTypes.string.isRequired,
+      plot: PropTypes.string.isRequired,
+      durationMinutes: PropTypes.number.isRequired,
+      year: PropTypes.string.isRequired,
+      genres: PropTypes.arrayOf(
+        PropTypes.shape({
+          ID: PropTypes.number.isRequired,
+          Name: PropTypes.string.isRequired,
+          NameEN: PropTypes.string.isRequired,
+        }),
+      ).isRequired,
+    }),
+  ).isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
+    state: PropTypes.shape({
+      params: PropTypes.shape({
+        cinemaId: PropTypes.number,
+      }).isRequired,
+    }).isRequired,
   }).isRequired,
 };
 const mapStateToProps = (reduxStoreState) => ({

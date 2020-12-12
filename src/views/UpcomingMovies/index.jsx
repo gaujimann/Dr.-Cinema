@@ -21,5 +21,6 @@ UpcomingMovies.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
+  getUpcomingMovies: PropTypes.func.isRequired,
 };
 export default connect(null, { getUpcomingMovies })(UpcomingMovies);

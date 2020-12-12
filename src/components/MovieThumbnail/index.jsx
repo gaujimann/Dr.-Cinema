@@ -2,6 +2,7 @@ import React from 'react';
 import {
   View, Text, TouchableOpacity, Image,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import styles from './styles';
 
 const MovieThumbnail = ({
@@ -33,5 +34,23 @@ const MovieThumbnail = ({
     </View>
   </TouchableOpacity>
 );
+
+MovieThumbnail.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  yearRelease: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      ID: PropTypes.number.isRequired,
+      Name: PropTypes.string.isRequired,
+      NameEN: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+  cinemaId: PropTypes.number.isRequired,
+};
 
 export default MovieThumbnail;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import MovieThumbnail from '../MovieThumbnail';
 
 const UpcomingMoviesList = ({ upcoming, navigation }) => (
@@ -28,6 +29,29 @@ const UpcomingMoviesList = ({ upcoming, navigation }) => (
     />
   </View>
 );
+
+UpcomingMoviesList.propTypes = {
+  upcoming: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      poster: PropTypes.string.isRequired,
+      plot: PropTypes.string.isRequired,
+      durationMinutes: PropTypes.number.isRequired,
+      year: PropTypes.string.isRequired,
+      genres: PropTypes.arrayOf(
+        PropTypes.shape({
+          ID: PropTypes.number.isRequired,
+          Name: PropTypes.string.isRequired,
+          NameEN: PropTypes.string.isRequired,
+        }),
+      ).isRequired,
+    }),
+  ).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 const sortedMovies = (reduxStoreState) => {
   reduxStoreState.upcoming.sort((movie1, movie2) => (movie1.year < movie2.year ? -1 : 1));
