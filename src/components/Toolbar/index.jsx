@@ -10,7 +10,7 @@ const Toolbar = ({ navigation }) => (
         navigation.navigate('UpcomingMovies');
       }}
     >
-      <Text style={styles.text}>Coming Soon!</Text>
+      <Text style={styles.text}>Væntanlegar Myndir!</Text>
     </TouchableOpacity>
   </View>
 );

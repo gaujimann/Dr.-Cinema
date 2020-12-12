@@ -7,7 +7,12 @@ import MovieDetails from '../views/MovieDetails';
 import UpcomingMovies from '../views/UpcomingMovies';
 
 const StackNavigator = createStackNavigator({
-  Cinemas,
+  Cinemas: {
+    screen: Cinemas,
+    navigationOptions: () => ({
+      title: 'Kvikmyndahús',
+    }),
+  },
   CinemaDetails: {
     screen: CinemaDetails,
     navigationOptions: ({ navigation }) => ({
@@ -23,7 +28,7 @@ const StackNavigator = createStackNavigator({
   UpcomingMovies: {
     screen: UpcomingMovies,
     navigationOptions: () => ({
-      title: 'Upcoming Movies',
+      title: 'Væntanlegar í bíó',
     }),
   },
 });

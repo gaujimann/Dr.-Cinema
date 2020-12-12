@@ -7,7 +7,7 @@ export default StyleSheet.create({
   },
   poster: {
     height: 350,
-    width: 175,
+    width: 300,
   },
   container: {
     margin: 8,
@@ -28,5 +28,6 @@ export default StyleSheet.create({
   },
   showtimeContainer: {
     padding: 8,
+    flexDirection: 'row',
   },
 });
