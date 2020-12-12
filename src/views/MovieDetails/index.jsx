@@ -114,14 +114,14 @@ MovieDetails.propTypes = {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       poster: PropTypes.string.isRequired,
-      plot: PropTypes.string.isRequired,
+      plot: PropTypes.string,
       durationMinutes: PropTypes.number.isRequired,
       year: PropTypes.string.isRequired,
       genres: PropTypes.arrayOf(
         PropTypes.shape({
           ID: PropTypes.number.isRequired,
           Name: PropTypes.string.isRequired,
-          NameEN: PropTypes.string.isRequired,
+          NameEN: PropTypes.string,
         }),
       ).isRequired,
     }),

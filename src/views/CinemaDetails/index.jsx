@@ -64,7 +64,7 @@ CinemaDetails.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
+      description: PropTypes.string,
       phone: PropTypes.string.isRequired,
       website: PropTypes.string.isRequired,
     }),
